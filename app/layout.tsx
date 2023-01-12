@@ -93,10 +93,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                             <ul className="menu-links">
                                 <li className="nav-link">
-                                    <a onClick={ () => router.push("/") }>
-                                        <i className='bx bx-home-alt icon'></i>
-                                        <span className="text nav-text">Home</span>
-                                    </a>
+                                    <Link href={ "/" } legacyBehavior>
+                                        <a>
+                                            <i className='bx bx-home-alt icon'></i>
+                                            <span className="text nav-text">Home</span>
+                                        </a>
+                                    </Link>
                                 </li>
 
                                 <li className="nav-link">
