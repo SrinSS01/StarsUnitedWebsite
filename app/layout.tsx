@@ -116,10 +116,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 </li>
 
                                 <li className="nav-link">
-                                    <a href="#">
-                                        <i className='bx bx-pie-chart-alt icon'></i>
-                                        <span className="text nav-text">Analytics</span>
-                                    </a>
+                                    <Link href={ "/analytics" } legacyBehavior>
+                                        <a>
+                                            <i className='bx bx-pie-chart-alt icon'></i>
+                                            <span className="text nav-text">Analytics</span>
+                                        </a>
+                                    </Link>
                                 </li>
 
                                 <li className="nav-link">
