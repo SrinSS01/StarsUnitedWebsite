@@ -21,8 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const [ redirect, setRedirect ] = useState<string>();
     const router = useRouter();
     useEffect(() => {
-        setClientId(process.env["CLIENT_ID"] ?? _clientId);
-        setRedirect(process.env["REDIRECT"] ?? _redirect);
+        setClientId(process.env.CLIENT_ID ?? _clientId);
+        setRedirect(process.env.REDIRECT ?? _redirect);
         const cookieToken = cookie["access_token"];
         setToken(cookieToken);
         setDark(localStorage.getItem("mode") === "true")
