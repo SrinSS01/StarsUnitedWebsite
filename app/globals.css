@@ -354,6 +354,9 @@ body.dark .section .text {
     border-radius: 20px;
     width: fit-content;
     border: 0;
+    font-weight: bold;
+    color: var(--body-color);
+    background: var(--text-color);
 }
 
 .flex-column {
