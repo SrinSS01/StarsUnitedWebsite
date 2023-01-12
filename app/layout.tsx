@@ -21,6 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const [ redirect, setRedirect ] = useState<string>();
     const router = useRouter();
     useEffect(() => {
+        console.log(process.env.CLIENT_ID)
+        console.log(process.env.REDIRECT)
         setClientId(process.env.CLIENT_ID ?? _clientId);
         setRedirect(process.env.REDIRECT ?? _redirect);
         const cookieToken = cookie["access_token"];
