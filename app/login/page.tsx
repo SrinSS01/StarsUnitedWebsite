@@ -1,14 +1,14 @@
 'use client';
 
 import {useRouter, useSearchParams} from "next/navigation";
-import React, { useEffect } from "react";
-import { clientId, clientSecret, redirect } from "../../config"
+import React, {useEffect} from "react";
+import { clientId as _clientId, clientSecret as _clientSecret, redirect as _redirect } from "../../config"
 import { useCookies } from "react-cookie";
 
 export default () => {
     const router = useRouter();
     const params = useSearchParams();
-    const [ _, setCookie, removeCookie ] = useCookies<string>()
+    const [ _, setCookie, removeCookie ] = useCookies<string>();
 
     useEffect(() => {
         const code = params.get("code");
@@ -17,9 +17,9 @@ export default () => {
         const urlencoded = new URLSearchParams();
         urlencoded.append("grant_type", "authorization_code");
         urlencoded.append("code", code ?? "null");
-        urlencoded.append("client_id", clientId);
-        urlencoded.append("client_secret", clientSecret);
-        urlencoded.append("redirect_uri", redirect);
+        urlencoded.append("client_id", process.env["CLIENT_ID"] ?? _clientId);
+        urlencoded.append("client_secret", process.env["CLIENT_SECRET"] ?? _clientSecret);
+        urlencoded.append("redirect_uri", process.env["REDIRECT"] ?? _redirect);
 
         let requestOptions: RequestInit = {
             method: 'POST',

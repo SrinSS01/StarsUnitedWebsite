@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import logo from "../public/logo.png";
 import "./globals.css";
 import {useCookies} from "react-cookie";
-import { clientId, redirect } from "../config";
+import { clientId as _clientId, redirect as _redirect } from "../config";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 
@@ -17,8 +17,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const [ token, setToken ] = useState<string | null>();
     const [ avatar, setAvatar ] = useState<string | null>();
     const [ id, setId ] = useState<string | null>();
+    const [ clientId, setClientId ] = useState<string>();
+    const [ redirect, setRedirect ] = useState<string>();
     const router = useRouter();
     useEffect(() => {
+        setClientId(process.env["CLIENT_ID"] ?? _clientId);
+        setRedirect(process.env["REDIRECT"] ?? _redirect);
         const cookieToken = cookie["access_token"];
         setToken(cookieToken);
         setDark(localStorage.getItem("mode") === "true")
@@ -147,7 +151,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                     <span className="text nav-text">
                                         Logout
                                     </span>
-                                </a> || <a href={ `https://discord.com/api/oauth2/authorize?client_id=${ clientId }&redirect_uri=${ encodeURIComponent(redirect) }&response_type=code&scope=identify%20guilds%20email` }>
+                                </a> || <a href={ `https://discord.com/api/oauth2/authorize?client_id=${ clientId }&redirect_uri=${ encodeURIComponent(redirect!) }&response_type=code&scope=identify%20guilds%20email` }>
                                     <i className={`bx bx-log-in icon`}></i>
                                     <span className="text nav-text">
                                         Login
