@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import styles from "./ProfilePage.module.css"
 import {useRouter} from "next/navigation";
 import {useCookies} from "react-cookie";
+import Image from "next/image";
 
 export default function ProfilePage() {
     const [avatar, setAvatar] = useState<string | null>();
@@ -38,11 +39,11 @@ export default function ProfilePage() {
                         <div className={styles.values}>{username}</div>
                     </div>
                 </div>
-                <img style={{
+                <Image style={{
                     borderRadius: "20%"
                 }}
-                     src={avatar && `https://cdn.discordapp.com/avatars/${id}/${avatar}.png` || "https://cdn.discordapp.com/embed/avatars/0.png"}
-                     width={100} height={100} alt={"alt"}/>
+                       src={avatar && `https://cdn.discordapp.com/avatars/${id}/${avatar}.png` || "https://cdn.discordapp.com/embed/avatars/0.png"}
+                       width={100} height={100} alt={"alt"}/>
             </div>
             <div className={`text card`}>
                 <div style={{

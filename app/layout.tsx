@@ -9,6 +9,7 @@ import {useCookies} from "react-cookie";
 import { clientId as _clientId, redirect as _redirect } from "../config";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     const [ dark, setDark ] = useState(false);
@@ -66,12 +67,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <header>
                         <div className="image-text">
                             <span className="image">
-                                { token && <img style={{
+                                { token && <Image style={{
                                     padding: 5,
                                     borderRadius: "100%"
                                 }
-                                    } src={ avatar && `https://cdn.discordapp.com/avatars/${id}/${avatar}.png` || "loading.gif" } alt={ "" } className='icon'></img>
-                                    || <img src={ logo.src } alt="Logo"/>
+                                    } src={ avatar && `https://cdn.discordapp.com/avatars/${id}/${avatar}.png` || "loading.gif" } alt={ "" } className='icon'></Image>
+                                    || <Image src={ logo.src } alt="Logo"/>
                                 }
                             </span>
                             <div className="text logo-text">

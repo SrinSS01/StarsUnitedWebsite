@@ -1,8 +1,9 @@
 import React from "react";
+import Image from "next/image";
 
 const Card = () => (<div className={ "card flex-column w-fit" }>
     <div style={{ display: "flex" }}>
-        <img src={ "img/SilverStars_frei_ohne_R.png" } width={ 100 } alt={ "" }/>
+        <Image src={ "img/SilverStars_frei_ohne_R.png" } width={ 100 } alt={ "" }/>
         <div className={ "text" }>#TEXT<br></br>#TEXT</div>
     </div>
     <div className={ "text" } style={{
